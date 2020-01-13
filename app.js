@@ -7,6 +7,7 @@ const helmet = require("helmet");
 const http = require("http");
 const cors = require("cors");
 const logger = require("morgan");
+const cookieParser = require("cookie-parser");
 
 /**
  * server configuration
@@ -37,6 +38,8 @@ app.use(
 // configure to only allow requests from certain origins
 app.use(cors({ credentials: true, origin: true }));
 
+app.use(cookieParser());
+
 // parsing the request body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -47,7 +50,7 @@ if (config.env === "development") {
 }
 
 // mount all routes on root /api/v1 path
-app.all("/api/v1", routes);
+app.use("/api/v1", routes);
 
 // if error is not an instanceOf APIError, convert it.
 app.use(error.converter);
@@ -59,8 +62,6 @@ app.use(error.notFound);
 app.use(error.handler);
 
 //opens a port if the environment is not test
-if (process.env.NODE_ENV !== "test") {
-  server.listen(config.port, () =>
-    console.info(`server started on port ${config.port} (${config.env})`)
-  );
-}
+server.listen(config.port, () =>
+  console.info(`server started on port ${config.port} (${config.env})`)
+);
