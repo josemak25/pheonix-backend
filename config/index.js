@@ -13,7 +13,16 @@ const envVarsSchema = Joi.object({
   MONGO_HOST: Joi.string()
     .required()
     .default("mongodb://localhost")
-    .description("Database host name")
+    .description("Database host name"),
+  BCRYPT_ROUND: Joi.number()
+    .required()
+    .description("bcrypt password hash"),
+  JWT_SECRET: Joi.string()
+    .required()
+    .description("JWT required to sign token"),
+  JWT_EXPIRY: Joi.string()
+    .required()
+    .description("JWT expiry required to sign off token expiry time")
 })
   .unknown()
   .required();
