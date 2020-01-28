@@ -6,11 +6,11 @@ const schema = new Schema(
       type: Number,
       required: true
     },
-    user_id: {
+    userId: {
       type: Schema.Types.ObjectId,
       required: true
     },
-    category_id: {
+    categoryId: {
       type: String,
       required: true
     },
@@ -19,7 +19,7 @@ const schema = new Schema(
       enum: [true, false],
       required: true
     },
-    due_date: {
+    dueDate: {
       type: Date,
       required: true
     },
@@ -32,7 +32,7 @@ const schema = new Schema(
       type: Number,
       required: true
     },
-    thumbnails: {
+    thumbNails: {
       type: [String],
       required: true
     }
