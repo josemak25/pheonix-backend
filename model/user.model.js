@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const schema = new Schema(
+const UserSchema = new Schema(
   {
     name: {
       type: String,
@@ -15,6 +15,21 @@ const schema = new Schema(
   { timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" } }
 );
 
-schema.methods.toJSON = function() {};
+/**
+ * pre-save hooks
+ */
+UserSchema.pre("save", next => {});
 
-module.exports = model("url", schema);
+/**
+ * Methods
+ */
+UserSchema.methods = {
+  toJSON() {}
+};
+
+/**
+ * Statics
+ */
+UserSchema.statics = {};
+
+module.exports = model("url", UserSchema);

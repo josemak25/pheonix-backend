@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const schema = new Schema(
+const SkillSchema = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -14,6 +14,21 @@ const schema = new Schema(
   { timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" } }
 );
 
-schema.methods.toJSON = function() {};
+/**
+ * pre-save hooks
+ */
+SkillSchema.pre("save", next => {});
 
-module.exports = model("skill", schema);
+/**
+ * Methods
+ */
+SkillSchema.methods = {
+  toJSON() {}
+};
+
+/**
+ * Statics
+ */
+SkillSchema.statics = {};
+
+module.exports = model("skill", SkillSchema);

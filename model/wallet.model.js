@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const schema = new Schema(
+const WalletSchema = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -14,6 +14,21 @@ const schema = new Schema(
   { timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" } }
 );
 
-schema.methods.toJSON = function() {};
+/**
+ * pre-save hooks
+ */
+WalletSchema.pre("save", next => {});
 
-module.exports = model("wallet", schema);
+/**
+ * Methods
+ */
+WalletSchema.methods = {
+  toJSON() {}
+};
+
+/**
+ * Statics
+ */
+WalletSchema.statics = {};
+
+module.exports = model("wallet", WalletSchema);

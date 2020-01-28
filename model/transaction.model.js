@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const schema = new Schema(
+const TransactionSchema = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -18,6 +18,21 @@ const schema = new Schema(
   { timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" } }
 );
 
-schema.methods.toJSON = function() {};
+/**
+ * pre-save hooks
+ */
+TransactionSchema.pre("save", next => {});
 
-module.exports = model("transaction", schema);
+/**
+ * Methods
+ */
+TransactionSchema.methods = {
+  toJSON() {}
+};
+
+/**
+ * Statics
+ */
+TransactionSchema.statics = {};
+
+module.exports = model("transaction", TransactionSchema);

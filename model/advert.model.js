@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const schema = new Schema(
+const AdvertSchema = new Schema(
   {
     price: {
       type: Number,
@@ -40,6 +40,21 @@ const schema = new Schema(
   { timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" } }
 );
 
-schema.methods.toJSON = function() {};
+/**
+ * pre-save hooks
+ */
+AdvertSchema.pre("save", next => {});
 
-module.exports = model("advert", schema);
+/**
+ * Methods
+ */
+AdvertSchema.methods = {
+  toJSON() {}
+};
+
+/**
+ * Statics
+ */
+AdvertSchema.statics = {};
+
+module.exports = model("advert", AdvertSchema);
