@@ -4,11 +4,37 @@ const UserSchema = new Schema(
   {
     name: {
       type: String,
+      required: true
+    },
+    email: {
+      type: String,
       unique: true,
       required: true
     },
-    address: {
+    avatar: {
       type: String,
+      required: true
+    },
+    location: {
+      type: String,
+      required: true
+    },
+    phone: {
+      type: Number,
+      required: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
+    conversionId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Conversion",
+      required: true
+    },
+    businessType: {
+      type: String,
+      enum: ["Merchant", "Store", "Expatriate", "Restaurant"],
       required: true
     }
   },
@@ -32,4 +58,4 @@ UserSchema.methods = {
  */
 UserSchema.statics = {};
 
-module.exports = model("url", UserSchema);
+module.exports = model("User", UserSchema);

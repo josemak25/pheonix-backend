@@ -16,13 +16,6 @@ const CategorySchema = new Schema(
 );
 
 /**
- * Ensure virtual fields are serialised
- */
-CategorySchema.set("toJSON", {
-  virtuals: true
-});
-
-/**
  * pre-save hooks
  */
 CategorySchema.pre("save", next => {});
@@ -30,7 +23,9 @@ CategorySchema.pre("save", next => {});
 /**
  * Methods
  */
-CategorySchema.methods = {};
+CategorySchema.methods = {
+  toJSON() {}
+};
 
 /**
  * Statics
