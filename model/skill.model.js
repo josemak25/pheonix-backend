@@ -1,14 +1,13 @@
 const { Schema, model } = require("mongoose");
 
-const CategorySchema = new Schema(
+const SkillSchema = new Schema(
   {
-    name: {
-      type: String,
+    userId: {
+      type: Schema.Types.ObjectId,
       required: true
     },
-    type: {
+    gigTitle: {
       type: String,
-      unique: true,
       required: true
     }
   },
@@ -18,18 +17,18 @@ const CategorySchema = new Schema(
 /**
  * pre-save hooks
  */
-CategorySchema.pre("save", next => {});
+SkillSchema.pre("save", next => {});
 
 /**
  * Methods
  */
-CategorySchema.methods = {
+SkillSchema.methods = {
   toJSON() {}
 };
 
 /**
  * Statics
  */
-CategorySchema.statics = {};
+SkillSchema.statics = {};
 
-module.exports = model("Category", CategorySchema);
+module.exports = model("skill", SkillSchema);

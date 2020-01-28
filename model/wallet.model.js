@@ -1,14 +1,13 @@
 const { Schema, model } = require("mongoose");
 
-const CategorySchema = new Schema(
+const WalletSchema = new Schema(
   {
-    name: {
-      type: String,
+    userId: {
+      type: Schema.Types.ObjectId,
       required: true
     },
-    type: {
-      type: String,
-      unique: true,
+    unit: {
+      type: Number,
       required: true
     }
   },
@@ -18,18 +17,18 @@ const CategorySchema = new Schema(
 /**
  * pre-save hooks
  */
-CategorySchema.pre("save", next => {});
+WalletSchema.pre("save", next => {});
 
 /**
  * Methods
  */
-CategorySchema.methods = {
+WalletSchema.methods = {
   toJSON() {}
 };
 
 /**
  * Statics
  */
-CategorySchema.statics = {};
+WalletSchema.statics = {};
 
-module.exports = model("Category", CategorySchema);
+module.exports = model("wallet", WalletSchema);

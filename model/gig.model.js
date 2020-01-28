@@ -12,13 +12,6 @@ const GigSchema = new Schema(
 );
 
 /**
- * Ensure virtual fields are serialised
- */
-GigSchema.set("toJSON", {
-  virtuals: true
-});
-
-/**
  * pre-save hooks
  */
 GigSchema.pre("save", next => {});
@@ -26,7 +19,9 @@ GigSchema.pre("save", next => {});
 /**
  * Methods
  */
-GigSchema.methods = {};
+GigSchema.methods = {
+  toJSON() {}
+};
 
 /**
  * Statics

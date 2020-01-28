@@ -42,26 +42,20 @@ const UserSchema = new Schema(
 );
 
 /**
- * Ensure virtual fields are serialised
- */
-UserSchema.set("toJSON", {
-  virtuals: true
-});
-
-/**
  * pre-save hooks
  */
-UserSchema.pre("save", (next) => {});
+UserSchema.pre("save", next => {});
 
 /**
  * Methods
  */
-UserSchema.methods = {};
+UserSchema.methods = {
+  toJSON() {}
+};
 
 /**
  * Statics
  */
-UserSchema.statics = {}
-
+UserSchema.statics = {};
 
 module.exports = model("User", UserSchema);

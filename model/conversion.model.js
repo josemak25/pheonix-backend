@@ -16,13 +16,6 @@ const ConversionSchema = new Schema(
 );
 
 /**
- * Ensure virtual fields are serialised
- */
-ConversionSchema.set("toJSON", {
-  virtuals: true
-});
-
-/**
  * pre-save hooks
  */
 ConversionSchema.pre("save", next => {});
@@ -30,7 +23,9 @@ ConversionSchema.pre("save", next => {});
 /**
  * Methods
  */
-ConversionSchema.methods = {};
+ConversionSchema.methods = {
+  toJSON() {}
+};
 
 /**
  * Statics
